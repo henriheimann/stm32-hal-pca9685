@@ -97,8 +97,8 @@ bool pca9685_init(pca9685_handle_t *handle)
 	success &= pca9685_write_u8(handle, PCA9685_REGISTER_MODE1, mode1_reg_default_value);
 	success &= pca9685_write_u8(handle, PCA9685_REGISTER_MODE2, mode2_reg_default_value);
 
-	// Turn all channels of to begin with.
-    uint8_t data[4] = { 0x00, 0x10, 0x00, 0x00 };
+    // Turn all channels off to begin with.
+    uint8_t data[4] = { 0x00, 0x00, 0x00, 0x10 };
     success &= pca9685_write_data(handle, PCA9685_REGISTER_ALL_LED_ON_L, data, 4);
 
 	success &= pca9685_set_pwm_frequency(handle, 1000);
